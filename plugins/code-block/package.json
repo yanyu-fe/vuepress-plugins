@@ -1,7 +1,7 @@
 {
-  "name": "vuepress-plugin-code-block",
+  "name": "@yanyu-fe/vuepress-plugin-code-block",
   "version": "1.0.0",
-  "description": "代码demo模块",
+  "description": "vuepress@v2代码实现代码块demo展示",
   "main": "lib/node/index.js",
   "types": "lib/node/index.d.ts",
   "scripts": {
@@ -20,10 +20,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@vuepress/theme-default": "^2.0.0-beta.32",
-    "@vueuse/core": "^7.5.3",
+    "@vuepress/theme-default": "^2.0.0-beta.33",
     "clipboard-copy": "^4.0.1",
     "lodash-es": "^4.17.21"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@rollup/pluginutils": "^4.1.2",
@@ -32,8 +34,8 @@
     "@types/node": "^16.11.17",
     "@vitejs/plugin-vue": "^2.0.1",
     "@vitejs/plugin-vue-jsx": "^1.3.3",
-    "@vuepress/core": "^2.0.0-beta.32",
-    "@vuepress/plugin-prismjs": "^2.0.0-beta.32",
+    "@vuepress/core": "^2.0.0-beta.33",
+    "@vuepress/plugin-prismjs": "^2.0.0-beta.33",
     "chokidar": "^3.5.2",
     "cpx": "^1.5.0",
     "esno": "^0.13.0",

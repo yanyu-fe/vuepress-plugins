@@ -1,11 +1,5 @@
 # 测试
 
-<demo src="./example/test.vue" desc="测试`hhh`侧飒飒擦拭">
-    撒的撒111
-    <div>测试</div>
-</demo>
+<demo title="测试1111111" src="./example/test.vue" desc="测试一下哈哈哈哈">撒大声地</demo>
 
-
-<demo src="./example/test.tsx">测试tsx</demo>
-
-<demo src="./example/tsTest.ts"></demo>
+<demo title="测试111" src="./example/test.tsx" desc="嘿嘿test`1111`">撒的撒打算</demo>

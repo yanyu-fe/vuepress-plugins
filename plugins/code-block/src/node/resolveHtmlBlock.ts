@@ -9,7 +9,6 @@ export const resolveHtmlBlock = (
   wrapper = "demo"
 ) => {
   const data: Record<string, string> = {};
-  console.log("Sss");
   md.renderer.rules.html_block = function (tokens, idx, options, env) {
     const dir = dirname(env.filePath);
     const content = tokens[idx].content;
