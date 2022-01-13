@@ -25,7 +25,8 @@
     "lodash-es": "^4.17.21"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@rollup/pluginutils": "^4.1.2",
