@@ -6,9 +6,10 @@
   "types": "lib/node/index.d.ts",
   "scripts": {
     "build": "pnpm clean && pnpm gen && pnpm copy",
-    "gen": "tsc -b tsconfig.build.json",
+    "gen": "tsc -b tsconfig.build.json -w",
     "clean": "rimraf lib *.tsbuildinfo",
-    "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,less}\" lib"
+    "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,less}\" lib",
+    "copy:w": "esno script/watchCopy.ts"
   },
   "files": [
     "lib"
@@ -19,8 +20,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "lodash-es": "^4.17.21",
-    "@vuepress/theme-default": "^2.0.0-beta.32"
+    "@vuepress/theme-default": "^2.0.0-beta.32",
+    "@vueuse/core": "^7.5.3",
+    "clipboard-copy": "^4.0.1",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "@rollup/pluginutils": "^4.1.2",
@@ -31,6 +34,7 @@
     "@vitejs/plugin-vue-jsx": "^1.3.3",
     "@vuepress/core": "^2.0.0-beta.32",
     "@vuepress/plugin-prismjs": "^2.0.0-beta.32",
+    "chokidar": "^3.5.2",
     "cpx": "^1.5.0",
     "esno": "^0.13.0",
     "minimist": "^1.2.5",

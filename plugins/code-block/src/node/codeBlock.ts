@@ -1,15 +1,15 @@
 import { App, AppOptions, Plugin } from "@vuepress/core";
-import { resolveHighlighter } from "@vuepress/plugin-prismjs";
-import { parser, Node, Content } from "posthtml-parser";
+import { parser } from "posthtml-parser";
 import { render } from "posthtml-render";
-import { dirname, join, extname, relative, resolve } from "path";
-import { existsSync, readFileSync } from "fs";
+import { dirname, join, relative, resolve } from "path";
 import { mergeConfig } from "vite";
+import { resolveHtmlBlock } from "./resolveHtmlBlock";
 const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
   const fileData: Record<string, Record<string, string>> = {};
   const wrapper = "demo";
   return {
     name: "vuepress-plugin-code-block",
+    multiple: true,
     alias: {
       "@codeBlock": app.dir.source(),
     },
@@ -26,75 +26,7 @@ const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
       }
     },
     extendsMarkdown: (md) => {
-      md.renderer.rules.html_block = function (tokens, idx, options, env) {
-        const data: Record<string, string> = {};
-        const dir = dirname(env.filePath);
-        const content = tokens[idx].content;
-        const html: Node[] = parser(content);
-        for (const htmlElement of html) {
-          if (typeof htmlElement === "object") {
-            if (htmlElement.tag === wrapper) {
-              // 处理这个demo
-              // 获取它里面的src中的信息
-              if (
-                htmlElement.attrs &&
-                htmlElement.attrs.src &&
-                typeof htmlElement.attrs.src === "string"
-              ) {
-                // 存在src
-                const componentPath = join(
-                  dir,
-                  htmlElement.attrs.src as string
-                );
-                const extName = extname(htmlElement.attrs.src);
-                const sourceData = srcCode(componentPath);
-                const highlighter = resolveHighlighter(extName.slice(1));
-                if (sourceData) {
-                  const highCode = highlighter?.(sourceData.trim());
-                  if (highCode) {
-                    htmlElement.attrs.highlightCode = encodeURIComponent(
-                      "<code>" + highCode + "</code>"
-                    );
-                  }
-                  htmlElement.attrs.code = encodeURIComponent(sourceData);
-                  // 对当前的代码进行格式化
-                  let codeBlockDemo$ =
-                    "codeBlockDemo" + (Object.keys(data).length + 1);
-                  if (!Object.keys(data).includes(htmlElement.attrs.src)) {
-                    // 存在
-                    data[htmlElement.attrs.src] = codeBlockDemo$;
-                  } else {
-                    codeBlockDemo$ = data[htmlElement.attrs.src];
-                  }
-                  // 判断数据是否存在
-                  if (
-                    htmlElement.content &&
-                    htmlElement.content instanceof Array
-                  ) {
-                    htmlElement.content.push({
-                      tag: codeBlockDemo$,
-                    });
-                  } else {
-                    if (htmlElement.content) {
-                      const content: Content = [];
-                      content.push(htmlElement.content);
-                      content.push({ tag: codeBlockDemo$ });
-                      htmlElement.content = content;
-                    } else {
-                      const content: Content = [];
-                      content.push({ tag: codeBlockDemo$ });
-                      htmlElement.content = content;
-                    }
-                  }
-                }
-                delete htmlElement.attrs.src;
-              }
-            }
-          }
-        }
-        fileData[env.filePath] = data;
-        return render(html);
-      };
+      resolveHtmlBlock(md, fileData, wrapper);
     },
     extendsPage: (page, app) => {
       const filePath = page.filePath;
@@ -145,28 +77,20 @@ const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
               i++;
             }
             if (!flag) {
-              const myData = `<script setup lang="ts">${importData.join(
+              const myData = `<script setup lang="ts">\n${importData.join(
                 "\n"
-              )}</script>`;
+              )}\n</script>`;
               page.hoistedTags.push(myData);
             }
           } else {
-            const myData = `<script setup lang="ts">${importData.join(
+            const myData = `<script setup lang="ts">\n${importData.join(
               "\n"
-            )}</script>`;
+            )}\n</script>`;
             page.hoistedTags.push(myData);
           }
         }
       }
     },
   };
-};
-
-const srcCode = (path: string) => {
-  if (existsSync(path)) {
-    return readFileSync(path, { encoding: "utf-8" });
-  } else {
-    console.warn("not exists path:" + path);
-  }
 };
 export default codeBlockPlugin;
