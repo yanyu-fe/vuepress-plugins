@@ -2,7 +2,7 @@ import { App, AppOptions, Plugin } from "@vuepress/core";
 import { parser } from "posthtml-parser";
 import { render } from "posthtml-render";
 import { dirname, join, relative, resolve } from "path";
-import { mergeConfig } from "vite";
+import { mergeConfig,normalizePath } from "vite";
 import { resolveHtmlBlock } from "./resolveHtmlBlock";
 const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
   const fileData: Record<string, Record<string, string>> = {};
@@ -13,7 +13,9 @@ const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
     alias: {
       "@codeBlock": app.dir.source(),
     },
-    clientAppEnhanceFiles: resolve(__dirname, "../client/clientAppEnhance.js"),
+    clientAppEnhanceFiles: normalizePath(
+      resolve(__dirname, "../client/clientAppEnhance.js")
+    ),
     onInitialized: (app) => {
       if (app.options.bundler.endsWith("vite")) {
         // 当前是vite的情况下
@@ -40,7 +42,9 @@ const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
           const demoPath = join(dirName, importsKey);
           const relativePath = relative(app.dir.source(), demoPath);
           importData.push(
-            `import ${demoName} from "@codeBlock/${relativePath}";`
+            `import ${demoName} from "@codeBlock/${normalizePath(
+              relativePath
+            )}";`
           );
         }
         let flag = false;

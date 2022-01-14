@@ -6,3 +6,4 @@ pnpm-lock.yaml
 .vscode
 plugins/**/dist
 plugins/**/lib
+*.log
