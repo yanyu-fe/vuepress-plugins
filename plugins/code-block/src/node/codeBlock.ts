@@ -1,12 +1,17 @@
-import { App, AppOptions, Plugin } from "@vuepress/core";
+import { App, Plugin } from "@vuepress/core";
 import { parser } from "posthtml-parser";
 import { render } from "posthtml-render";
 import { dirname, join, relative, resolve } from "path";
-import { mergeConfig,normalizePath } from "vite";
+import { mergeConfig, normalizePath } from "vite";
 import { resolveHtmlBlock } from "./resolveHtmlBlock";
-const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
+import codeBlockHMR from "./codeBlockHMR";
+export interface UserOptions {
+  wrapper?: string;
+  [key: string]: any;
+}
+const codeBlockPlugin = (_: UserOptions, app: App): Plugin => {
   const fileData: Record<string, Record<string, string>> = {};
-  const wrapper = "demo";
+  const wrapper = _.wrapper || "demo";
   return {
     name: "vuepress-plugin-code-block",
     multiple: true,
@@ -22,7 +27,7 @@ const codeBlockPlugin = (_: AppOptions, app: App): Plugin => {
         app.options.bundlerConfig.viteOptions = mergeConfig(
           app.options.bundlerConfig.viteOptions,
           {
-            plugins: [],
+            plugins: [codeBlockHMR(app)],
           }
         );
       }

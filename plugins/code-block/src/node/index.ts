@@ -1,2 +1,3 @@
 import codeBlockPlugin from "./codeBlock";
-export { codeBlockPlugin };
+import codeBlockHMR from "./codeBlockHMR";
+export { codeBlockPlugin, codeBlockHMR };

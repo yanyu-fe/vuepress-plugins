@@ -1,6 +1,6 @@
 <template>
   <div>我是测试模板{{ counter }}</div>
-  <button @click="add">增加</button>
+  <button @click="add">12112121</button>
 </template>
 
 <script setup lang="ts">

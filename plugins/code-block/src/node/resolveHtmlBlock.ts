@@ -8,8 +8,13 @@ export const resolveHtmlBlock = (
   fileData: Record<string, Record<string, string>>,
   wrapper = "demo"
 ) => {
-  const data: Record<string, string> = {};
+  let data: Record<string, string> = {};
+  let oldFile = "";
   md.renderer.rules.html_block = function (tokens, idx, options, env) {
+    if (oldFile !== env.filePath) {
+      data = {};
+      oldFile = env.filePath;
+    }
     const dir = dirname(env.filePath);
     const content = tokens[idx].content;
     const html: Node[] = parser(content);
@@ -64,7 +69,7 @@ export const resolveHtmlBlock = (
         }
       }
     }
-    fileData[env.filePath] = data;
+    fileData[env.filePath] = Object.assign({}, data);
     return render(html);
   };
 };

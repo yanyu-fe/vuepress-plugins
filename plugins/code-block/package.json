@@ -49,6 +49,7 @@
     "@types/node": "^16.11.17",
     "@vitejs/plugin-vue": "^2.0.1",
     "@vitejs/plugin-vue-jsx": "^1.3.3",
+    "@vuepress/cli": "^2.0.0-beta.33",
     "@vuepress/core": "^2.0.0-beta.33",
     "@vuepress/plugin-prismjs": "^2.0.0-beta.33",
     "chokidar": "^3.5.2",
