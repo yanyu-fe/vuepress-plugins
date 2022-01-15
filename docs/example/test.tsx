@@ -1,8 +1,9 @@
 import { defineComponent } from "vue";
+import "./test.less";
 export default defineComponent({
   setup() {
     return () => {
-      return <div>测试jsx</div>;
+      return <button class="button">测试jsx</button>;
     };
   },
 });

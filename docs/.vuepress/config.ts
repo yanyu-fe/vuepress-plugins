@@ -11,6 +11,13 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
           strict: false,
         },
       },
+      css: {
+        preprocessorOptions: {
+          less: {
+            javascriptEnabled: true,
+          },
+        },
+      },
       plugins: [vueJsx()],
     },
   },

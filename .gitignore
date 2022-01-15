@@ -7,3 +7,4 @@ pnpm-lock.yaml
 plugins/**/dist
 plugins/**/lib
 *.log
+.DS_Store

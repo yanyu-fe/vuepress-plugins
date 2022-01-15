@@ -1,3 +1,3 @@
 export const test = (): void => {
-  console.log("Ss");
+  console.log("我ts文件");
 };

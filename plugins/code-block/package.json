@@ -12,7 +12,10 @@
     "copy:w": "esno script/watchCopy.ts"
   },
   "files": [
-    "lib"
+    "lib",
+    "tscode.png",
+    "tsraw.png",
+    "tsshow.png"
   ],
   "keywords": [
     "vuepress-plugin"
