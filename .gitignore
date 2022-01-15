@@ -5,6 +5,7 @@ pnpm-lock.yaml
 .idea
 .vscode
 plugins/**/dist
+docs/**/dist
 plugins/**/lib
 *.log
 .DS_Store
