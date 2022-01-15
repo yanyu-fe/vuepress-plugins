@@ -1,6 +1,6 @@
 {
   "name": "@yanyu-fe/vuepress-plugin-code-block",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "vuepress@v2代码实现代码块demo展示",
   "main": "lib/node/index.js",
   "types": "lib/node/index.d.ts",
@@ -20,8 +20,11 @@
   "keywords": [
     "vuepress-plugin"
   ],
-  "author": "",
-  "license": "MIT",
+  "author": {
+    "name": "aibayanyu",
+    "email": "aibayanyu@qq.com",
+    "url": "https://www.28yanyu.cn"
+  },
   "dependencies": {
     "@vuepress/theme-default": "^2.0.0-beta.33",
     "clipboard-copy": "^4.0.1",
@@ -30,6 +33,14 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanyu-fe/vuepress-plugins.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yanyu-fe/vuepress-plugins/issues"
   },
   "devDependencies": {
     "@rollup/pluginutils": "^4.1.2",
