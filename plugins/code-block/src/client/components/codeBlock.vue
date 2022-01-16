@@ -8,7 +8,11 @@
       <div class="code-block-description" v-if="desc" v-html="descData"></div>
       <div class="code-block-actions">
         <CodeSandbox class="code-block-action" @click="openCodeSandbox" />
-        <FileCopy class="code-block-action" v-if="!copied" @click="copy" />
+        <FileCopy
+          class="code-block-action"
+          v-if="!copied"
+          @click="copy(codeSource)"
+        />
         <FileSuccess class="code-block-action-success" v-else />
         <Expand
           class="code-block-action-code"
@@ -39,6 +43,7 @@ import UnExpand from "./icons/UnExpand.vue";
 import FileCopy from "./icons/FileCopy.vue";
 import { computed, reactive, ref } from "vue";
 import Clipboard from "clipboard-copy";
+import { useClipboard } from "../composables/useClipboard";
 const props = defineProps({
   id: {
     type: String,
@@ -77,19 +82,7 @@ const openCodeSandbox = () => {
 const onShowCode = () => {
   showCode.value = !showCode.value;
 };
-const copied = ref(false);
-const copy = () => {
-  try {
-    Clipboard(codeSource.value);
-    copied.value = true;
-    const timer = setTimeout(() => {
-      copied.value = false;
-      clearTimeout(timer);
-    }, 3000);
-  } catch (e) {
-    // 复制失败
-  }
-};
+const { copied, copy } = useClipboard();
 const on = reactive({
   beforeEnter(el: any) {
     if (!el.dataset) el.dataset = {};
