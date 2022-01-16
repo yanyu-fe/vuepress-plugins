@@ -6,7 +6,8 @@
   "types": "lib/node/index.d.ts",
   "scripts": {
     "build": "pnpm clean && pnpm gen && pnpm copy",
-    "gen": "tsc -b tsconfig.build.json -w",
+    "gen": "tsc -b tsconfig.build.json",
+    "gen:w": "tsc -b tsconfig.build.json -w",
     "clean": "rimraf lib *.tsbuildinfo",
     "copy": "cpx \"src/**/*.{d.ts,vue,scss,css,less}\" lib",
     "copy:w": "esno script/watchCopy.ts"

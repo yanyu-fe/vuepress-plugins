@@ -7,3 +7,10 @@
 </demo>
 
 <demo src="./example/tsTest.ts"></demo>
+
+<script setup lang="ts">
+import { ref } from "vue";
+const title = ref("测试标题11111111")
+</script>
+
+{{ title }}

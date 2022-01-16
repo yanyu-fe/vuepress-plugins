@@ -10,7 +10,9 @@ export const resolveHtmlBlock = (
 ) => {
   let data: Record<string, string> = {};
   let oldFile = "";
-  md.renderer.rules.html_block = function (tokens, idx, options, env) {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const rawRule = md.renderer.rules.html_block!;
+  md.renderer.rules.html_block = function (tokens, idx, options, env, self) {
     if (oldFile !== env.filePath) {
       data = {};
       oldFile = env.filePath;
@@ -70,6 +72,7 @@ export const resolveHtmlBlock = (
       }
     }
     fileData[env.filePath] = Object.assign({}, data);
-    return render(html);
+    tokens[idx].content = render(html);
+    return rawRule(tokens, idx, options, env, self);
   };
 };

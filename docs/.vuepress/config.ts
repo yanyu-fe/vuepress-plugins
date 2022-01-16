@@ -1,4 +1,4 @@
-import { defineUserConfig } from "vuepress";
+import { defineUserConfig, Plugin } from "vuepress";
 import { DefaultThemeOptions, ViteBundlerOptions } from "vuepress";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { codeBlockPlugin } from "@yanyu-fe/vuepress-plugin-code-block";
