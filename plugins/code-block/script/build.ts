@@ -3,7 +3,7 @@ import { build } from "vite";
 import vuePlugin from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import dts from "vite-plugin-dts";
-import * as minimist from "minimist";
+import minimist from "minimist";
 import { omit } from "lodash-es";
 const rollupOptions: RollupOptions = {
   external: ["vite", "vite-plugin-vitepress-demo", "path", "fs"],
