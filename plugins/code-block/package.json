@@ -1,6 +1,6 @@
 {
   "name": "@yanyu-fe/vuepress-plugin-code-block",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "vuepress@v2代码实现代码块demo展示",
   "main": "lib/node/index.js",
   "types": "lib/node/index.d.ts",
