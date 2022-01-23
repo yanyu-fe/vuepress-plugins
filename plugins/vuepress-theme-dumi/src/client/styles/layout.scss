@@ -12,9 +12,12 @@
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center;
   height: var(--navbar-height);
   box-sizing: border-box;
-  border-bottom: 1px solid var(--c-border);
+  //border-bottom: 1px solid var(--c-border);
+  box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
   background-color: var(--c-bg-navbar);
   transition: background-color var(--t-color), border-color var(--t-color);
 }

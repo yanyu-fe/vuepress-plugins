@@ -11,6 +11,10 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
         text: "介绍",
         link: "/",
       },
+      {
+        text: "测试写一下",
+        link: "/hello",
+      },
     ],
     sidebar: [
       {

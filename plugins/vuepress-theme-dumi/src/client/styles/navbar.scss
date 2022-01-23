@@ -5,7 +5,7 @@
     var(--navbar-height) - 2 * var(--navbar-padding-v)
   );
 
-  padding: var(--navbar-padding-v) var(--navbar-padding-h);
+  padding: 0 var(--navbar-padding-h);
   line-height: var(--navbar-line-height);
 
   .logo {
@@ -25,9 +25,9 @@
     display: flex;
     position: absolute;
     box-sizing: border-box;
-    top: var(--navbar-padding-v);
     right: var(--navbar-padding-h);
-    height: var(--navbar-line-height);
+    align-items: center;
+    height: var(--navbar-height);
     padding-left: var(--navbar-padding-h);
     white-space: nowrap;
     font-size: 0.9rem;
@@ -60,27 +60,32 @@
  * navbar-items
  */
 .navbar-items {
-  display: inline-block;
-
+  display: flex;
+  height: var(--navbar-height);
+  align-items: center;
   a {
-    display: inline-block;
+    display: block;
     line-height: 1.4rem;
     color: inherit;
-
-    &:hover,
-    &.router-link-active {
-      color: var(--c-text-accent);
-    }
   }
 
   .navbar-item {
     position: relative;
-    display: inline-block;
+    display: flex;
     margin-left: 1.5rem;
-    line-height: var(--navbar-line-height);
-
+    height: var(--navbar-height);
     &:first-child {
       margin-left: 0;
+    }
+    >a{
+      line-height: var(--navbar-height);
+      &:hover,
+      &.router-link-active {
+        color: var(--c-text-accent);
+      }
+      &:not(.router-link-active){
+        border-bottom-color: transparent;
+      }
     }
   }
 }
