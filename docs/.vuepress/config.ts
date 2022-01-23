@@ -1,9 +1,24 @@
-import { defineUserConfig, Plugin } from "vuepress";
-import { DefaultThemeOptions, ViteBundlerOptions } from "vuepress";
+import { defineUserConfig } from "vuepress";
+import { ViteBundlerOptions } from "vuepress";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import { codeBlockPlugin } from "@yanyu-fe/vuepress-plugin-code-block";
+import { DefaultThemeOptions } from "@yanyu-fe/vuepress-theme-dumi";
 export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   title: "文档中心",
+  theme: "@yanyu-fe/vuepress-theme-dumi",
+  themeConfig: {
+    navbar: [
+      {
+        text: "介绍",
+        link: "/",
+      },
+    ],
+    sidebar: [
+      {
+        text: "介绍",
+        link: "/",
+      },
+    ],
+  },
   bundlerConfig: {
     viteOptions: {
       server: {
@@ -21,5 +36,5 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
       plugins: [vueJsx()],
     },
   },
-  plugins: [[codeBlockPlugin, {}]],
+  plugins: [["@yanyu-fe/vuepress-plugin-code-block", {}]],
 });

@@ -1,7 +1,7 @@
-import { defaultTheme } from './defaultTheme'
+import { defaultTheme } from "./defaultTheme";
 
-export * from '../shared'
-export * from './defaultTheme'
-export * from './utils'
+export * from "../shared";
+export * from "./defaultTheme";
+export * from "./utils";
 
-export default defaultTheme
+export default defaultTheme;

@@ -4,5 +4,6 @@
     { "path": "./tsconfig.esm.json" },
     { "path": "./tsconfig.cjs.json" }
   ],
-  "files": []
+  "files": [],
+  "exclude": ["node_modules"]
 }
