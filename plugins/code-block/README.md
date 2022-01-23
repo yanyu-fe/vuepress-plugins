@@ -27,10 +27,9 @@ pnpm add -D @yanyu-fe/vuepress-plugin-code-block
 ```ts
 import { defineUserConfig } from "vuepress";
 import { DefaultThemeOptions, ViteBundlerOptions } from "vuepress";
-import { codeBlockPlugin } from "@yanyu-fe/vuepress-plugin-code-block";
 export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   title: "文档",
-  plugins: [[codeBlockPlugin, {}]],
+  plugins: [['@yanyu-fe/vuepress-plugin-code-block', {}]],
 });
 
 ```
