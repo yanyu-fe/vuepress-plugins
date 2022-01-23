@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import NavbarItems from '@theme/NavbarItems.vue'
-import SidebarItems from '@theme/SidebarItems.vue'
+import NavbarItems from "@theme/NavbarItems.vue";
+import SidebarItems from "@theme/SidebarItems.vue";
 </script>
 
 <template>
