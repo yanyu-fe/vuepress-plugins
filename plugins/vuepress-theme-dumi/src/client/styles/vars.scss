@@ -2,6 +2,10 @@
   // brand colors
   --c-brand: #4569d4;
   --c-brand-light: #6e8ee0;
+  --c-siderbar-active:linear-gradient(270deg,#f8faff,rgba(248,250,255,0));
+  --c-siderbar-bg:transparent;
+
+  --c-navbar-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
 
   // background colors
   --c-bg: #ffffff;
@@ -12,15 +16,15 @@
   --c-bg-arrow: #cccccc;
 
   // text colors
-  --c-text: #2c3e50;
+  --c-text: #454d64;
   --c-text-accent: var(--c-brand);
-  --c-text-light: #3a5169;
+  --c-text-light: #717484;
   --c-text-lighter: #4e6e8e;
   --c-text-lightest: #6a8bad;
   --c-text-quote: #999999;
 
   // border colors
-  --c-border: #eaecef;
+  --c-border: #ebedf1;
   --c-border-dark: #dfe2e5;
 
   // custom container colors
@@ -69,6 +73,7 @@
   --sidebar-width-mobile: calc(var(--sidebar-width) * 0.82);
   --content-width: 740px;
   --homepage-width: 960px;
+  --anchor-width: 12rem;
 }
 
 // plugin-back-to-top

@@ -1,9 +1,9 @@
 @import '_variables';
 
 @mixin content_wrapper {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 2rem 2.5rem;
+  //max-width: var(--content-width);
+  //margin: 0 auto;
+  padding: 2rem 3rem;
 
   @media (max-width: $MQNarrow) {
     padding: 2rem;

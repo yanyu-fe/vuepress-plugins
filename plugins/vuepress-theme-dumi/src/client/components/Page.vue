@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import PageMeta from '@theme/PageMeta.vue'
-import PageNav from '@theme/PageNav.vue'
+import PageMeta from "@theme/PageMeta.vue";
+import PageNav from "@theme/PageNav.vue";
+import Anchor from "@theme/Anchor.vue";
 </script>
 
 <template>
@@ -10,6 +11,8 @@ import PageNav from '@theme/PageNav.vue'
     <div class="theme-default-content">
       <Content />
     </div>
+
+    <Anchor />
 
     <PageMeta />
 

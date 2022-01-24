@@ -2,20 +2,23 @@ html.dark {
   // brand colors
   --c-brand: #4569d4;
   --c-brand-light: #6e8ee0;
+  --c-siderbar-active:linear-gradient(270deg,#3d3d3e,hsla(0,0%,100%,.06));
+  --c-siderbar-bg:hsla(0,0%,100%,.08);
 
+  --c-navbar-shadow:0 2px 8px 0 rgb(0 0 0 / 65%);
   // background colors
-  --c-bg: #22272e;
+  --c-bg: #141414;
   --c-bg-light: #2b313a;
   --c-bg-lighter: #262c34;
 
   // text colors
-  --c-text: #adbac7;
-  --c-text-light: #96a7b7;
+  --c-text: hsla(0,0%,100%,.85);
+  --c-text-light: hsla(0,0%,100%,.65);
   --c-text-lighter: #8b9eb0;
   --c-text-lightest: #8094a8;
 
   // border colors
-  --c-border: #3e4c5a;
+  --c-border: #6b6c6d;
   --c-border-dark: #34404c;
 
   // custom container colors

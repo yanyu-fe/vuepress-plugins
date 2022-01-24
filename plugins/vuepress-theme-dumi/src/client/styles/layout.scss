@@ -4,7 +4,11 @@
 .page {
   padding-top: var(--navbar-height);
   padding-left: var(--sidebar-width);
+  padding-right: var(--anchor-width);
 }
+
+
+
 
 .navbar {
   position: fixed;
@@ -17,7 +21,7 @@
   height: var(--navbar-height);
   box-sizing: border-box;
   //border-bottom: 1px solid var(--c-border);
-  box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+  box-shadow: var(--c-navbar-shadow);
   background-color: var(--c-bg-navbar);
   transition: background-color var(--t-color), border-color var(--t-color);
 }
@@ -117,6 +121,10 @@
 
     .page {
       padding-left: 0;
+      padding-right: 0;
+    }
+    .theme-anchor{
+      display: none;
     }
   }
 }
