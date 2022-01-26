@@ -119,6 +119,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (
       ["@vuepress/palette", { preset: "sass" }],
       ["@vuepress/prismjs", themePlugins.prismjs !== false],
       ["@vuepress/theme-data", { themeData: localeOptions }],
+      ["@vuepress/plugin-toc", {}],
     ],
   };
 };

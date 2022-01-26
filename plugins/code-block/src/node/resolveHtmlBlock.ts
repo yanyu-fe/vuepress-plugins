@@ -37,7 +37,10 @@ export const resolveHtmlBlock = (
               wrapper,
               dir
             );
-            if (typeof resolveCode === "string") return resolveCode;
+            if (typeof resolveCode === "string") {
+              tokens[idx].content = resolveCode;
+              return rawRule(tokens, idx, options, env, self);
+            }
             if (resolveCode) {
               // 对当前的代码进行格式化
               let codeBlockDemo$ =
@@ -48,7 +51,7 @@ export const resolveHtmlBlock = (
               } else {
                 codeBlockDemo$ = data[htmlElement.attrs.src];
               }
-              // 判断数据是否存在
+              // 判断数据是否存在;
               if (htmlElement.content && htmlElement.content instanceof Array) {
                 htmlElement.content.push({
                   tag: codeBlockDemo$,

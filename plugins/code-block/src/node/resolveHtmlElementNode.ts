@@ -34,15 +34,16 @@ export const resolveHtmlElementNode = (
             const desc = htmlElement.attrs.desc;
             if (desc && typeof desc === "string") {
               htmlElement.attrs.desc = encodeURIComponent(
-                md.render(htmlElement.attrs.desc as string)
+                resolveFormatSource(htmlElement.attrs.desc as string)
               );
             }
           }
           return true;
         } else {
-          return resolveFormatSource(md, sourceData, extName.slice(1));
+          return resolveFormatSource(sourceData, extName.slice(1));
         }
       }
     }
   }
+  return false;
 };

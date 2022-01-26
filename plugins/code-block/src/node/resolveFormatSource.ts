@@ -1,11 +1,19 @@
-import * as MarkDownIt from "markdown-it";
-
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { createMarkdown } from "@vuepress/markdown";
+import { resolveHighlighter } from "@vuepress/plugin-prismjs";
 export const resolveFormatSource = (
-  md: MarkDownIt,
   sourceData: string,
-  ext: string
+  ext?: string
 ): string => {
-  // 高亮显示
-  const code = "```" + ext + "\n" + sourceData + "\n" + "```";
-  return md.render(code);
+  if (ext) {
+    // 高亮显示
+    const code = "```" + ext + "\n" + sourceData + "\n" + "```";
+    const Highlight = resolveHighlighter(ext);
+    const md = createMarkdown({ highlight: Highlight });
+    return md.render(code);
+  } else {
+    const md = createMarkdown();
+    return md.render(sourceData);
+  }
 };
