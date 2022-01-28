@@ -66,16 +66,16 @@ export const resolveSidebarItems = (
     return [];
   }
 
-  if (sidebarConfig === "auto") {
-    return resolveAutoSidebarItems(sidebarDepth);
-  }
+  // if (sidebarConfig === "auto") {
+  //   return resolveAutoSidebarItems(sidebarDepth);
+  // }
 
   if (isArray(sidebarConfig)) {
-    return resolveArraySidebarItems(sidebarConfig, sidebarDepth);
+    return resolveArraySidebarItems(sidebarConfig);
   }
 
   if (isPlainObject(sidebarConfig)) {
-    return resolveMultiSidebarItems(sidebarConfig, sidebarDepth);
+    return resolveMultiSidebarItems(sidebarConfig);
   }
 
   return [];
@@ -121,11 +121,11 @@ export const resolveAutoSidebarItems = (
  * Resolve sidebar items if the config is an array
  */
 export const resolveArraySidebarItems = (
-  sidebarConfig: SidebarConfigArray,
-  sidebarDepth: number
+  sidebarConfig: SidebarConfigArray
+  // sidebarDepth: number
 ): ResolvedSidebarItem[] => {
-  const route = useRoute();
-  const page = usePageData();
+  // const route = useRoute();
+  // const page = usePageData();
 
   const handleChildItem = (
     item: ResolvedSidebarItem | SidebarItem | string
@@ -146,17 +146,14 @@ export const resolveArraySidebarItems = (
 
     // if the sidebar item is current page and children is not set
     // use headers of current page as children
-    if (childItem.link === route.path) {
-      // skip h1 header
-      const headers =
-        page.value.headers[0]?.level === 1
-          ? page.value.headers[0].children
-          : page.value.headers;
-      return {
-        ...childItem,
-        children: headersToSidebarItemChildren(headers, sidebarDepth),
-      };
-    }
+    // if (childItem.link === route.path) {
+    // skip h1 header
+    // const headers = [];
+    // return {
+    //   ...childItem,
+    //   children: headersToSidebarItemChildren(headers, sidebarDepth),
+    // };
+    // }
 
     return childItem;
   };
@@ -168,12 +165,12 @@ export const resolveArraySidebarItems = (
  * Resolve sidebar items if the config is a key -> value (path-prefix -> array) object
  */
 export const resolveMultiSidebarItems = (
-  sidebarConfig: SidebarConfigObject,
-  sidebarDepth: number
+  sidebarConfig: SidebarConfigObject
+  // sidebarDepth: number
 ): ResolvedSidebarItem[] => {
   const route = useRoute();
   const sidebarPath = resolveLocalePath(sidebarConfig, route.path);
   const matchedSidebarConfig = sidebarConfig[sidebarPath] ?? [];
 
-  return resolveArraySidebarItems(matchedSidebarConfig, sidebarDepth);
+  return resolveArraySidebarItems(matchedSidebarConfig);
 };

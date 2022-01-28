@@ -7,6 +7,10 @@
   padding-right: var(--anchor-width);
 }
 
+.page-clear-anchor{
+  padding-right: 0;
+}
+
 .navbar {
   position: fixed;
   z-index: 20;
