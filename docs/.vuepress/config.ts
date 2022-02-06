@@ -4,7 +4,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import { DefaultThemeOptions } from "@yanyu-fe/vuepress-theme-dumi";
 export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   title: "文档中心",
-  theme: "@yanyu-fe/vuepress-theme-dumi",
+  // theme: "@yanyu-fe/vuepress-theme-dumi",
   lang: "zh-CN",
   themeConfig: {
     lastUpdatedText: "最后更新时间",
