@@ -42,7 +42,6 @@ import Expand from "./icons/Expand.vue";
 import UnExpand from "./icons/UnExpand.vue";
 import FileCopy from "./icons/FileCopy.vue";
 import { computed, reactive, ref } from "vue";
-import Clipboard from "clipboard-copy";
 import { useClipboard } from "../composables/useClipboard";
 const props = defineProps({
   id: {
