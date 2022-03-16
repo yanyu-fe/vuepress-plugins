@@ -12,6 +12,7 @@
 }
 
 .anchor-link-item {
+  color: var(--c-text);
   margin: 5px 0 ;
   padding-left: 8px;
   transition: all .3s;
@@ -21,7 +22,7 @@
 }
 .anchor-link-href{
   font-size: 15px;
-  color: var(--c-text);
+  color: inherit;
   transition: all .3s;
 }
 
@@ -37,14 +38,20 @@
     height: 100%;
     width: 2px;
     background-color: var(--c-anchor-border);
+    transition: all .3s;
   }
 }
+.anchor-link-text-active{
+  color: var(--c-brand-light);
+  transition: all .3s;
+}
+
 .anchor-link-active{
   position: absolute;
   background: var(--c-brand-light);
   display: block;
   width: 2px;
-  height: 15px;
+  height: 22px;
   transition: top .3s ease-in-out;
-  top: 3px;
+  top: 0;
 }
