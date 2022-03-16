@@ -1,7 +1,6 @@
 node_modules
 **/.cache
 **/.temp
-pnpm-lock.yaml
 .idea
 .vscode
 plugins/**/dist
