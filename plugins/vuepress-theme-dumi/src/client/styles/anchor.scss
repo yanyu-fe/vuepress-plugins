@@ -4,6 +4,7 @@
   height: 100%;
   top: var(--navbar-height);
   width: var(--anchor-width);
+  overflow-y: auto;
 }
 .theme-anchor{
   position: relative;

@@ -59,7 +59,11 @@ const updateTop = (hash?: string, isAuto = false) => {
   animating.value = true;
   const running = () => {
     const top1 = window.scrollY || (window as any).scrollTop;
-    if (top1 === scroll.offsetTop) {
+    if (
+      top1 === scroll.offsetTop ||
+      top1 + document.documentElement.clientHeight ===
+        document.documentElement.offsetHeight
+    ) {
       animating.value = false;
       window.removeEventListener("scroll", running);
     }

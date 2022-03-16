@@ -2,7 +2,7 @@
 
 啊实打实
 
-## 内容测试啊实打
+## 内容测试
 <div>
     <demo title="累加器1" src="./example/test.vue" desc="这是一个简单的累加器"></demo>
 </div>

@@ -23,13 +23,20 @@ import { computed, inject, onMounted, toRefs, watch } from "vue";
 const props = defineProps<{
   item: PageHeader;
 }>();
-const { updateTop, setActiveData, activeData, registerLink, unregisterLink } =
-  inject<any>("AnchorLinkTextActive");
+const {
+  updateTop,
+  setActiveData,
+  activeData,
+  registerLink,
+  unregisterLink,
+  setAnimating,
+} = inject<any>("AnchorLinkTextActive");
 
 const { item } = toRefs(props);
 const updateLink = (itemData: PageHeader) => {
   setActiveData(itemData.slug);
   setTimeout(() => {
+    setAnimating(false);
     updateTop(itemData.slug);
   });
 };
