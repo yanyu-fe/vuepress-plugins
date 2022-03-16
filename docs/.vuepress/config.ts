@@ -55,5 +55,17 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
       plugins: [vueJsx()],
     },
   },
-  plugins: [["@yanyu-fe/vuepress-plugin-code-block", {}]],
+  plugins: [
+      ["@yanyu-fe/vuepress-plugin-code-block", {}],
+    [
+      '@vuepress/plugin-search',
+      {
+        locales:{
+          '/':{
+            placeholder:"搜索"
+          }
+        }
+      }
+    ],
+  ],
 });
