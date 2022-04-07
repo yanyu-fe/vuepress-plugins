@@ -84,11 +84,11 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   },
   bundlerConfig: {
     viteOptions: {
-      server: {
-        fs: {
-          strict: false,
-        },
-      },
+      // server: {
+      // fs: {
+      //   strict: false,
+      // },
+      // },
       css: {
         preprocessorOptions: {
           less: {

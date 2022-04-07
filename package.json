@@ -7,7 +7,9 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "dev:dumi":"pnpm dev --filter=vuepress-theme-dumi",
+    "build:dumi":"pnpm build --filter=vuepress-theme-dumi",
     "dev:block":"pnpm dev --filter=vuepress-plugin-code-block",
+    "build:block":"pnpm build --filter=vuepress-plugin-code-block",
     "preinstall": "npx only-allow pnpm"
   },
   "keywords": [],
