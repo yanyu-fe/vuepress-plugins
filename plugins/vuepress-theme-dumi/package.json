@@ -51,21 +51,21 @@
     "@vuepress/plugin-palette": "2.0.0-beta.36",
     "@vuepress/plugin-prismjs": "2.0.0-beta.36",
     "@vuepress/plugin-theme-data": "2.0.0-beta.36",
-    "@vuepress/plugin-toc": "^2.0.0-beta.35",
+    "@vuepress/plugin-toc": "^2.0.0-beta.38",
     "@vuepress/shared": "2.0.0-beta.35",
     "@vuepress/utils": "2.0.0-beta.35",
-    "@vueuse/core": "^7.5.3",
-    "sass": "^1.47.0",
-    "sass-loader": "^12.4.0",
-    "vue": "^3.2.26",
-    "vue-router": "^4.0.12"
+    "@vueuse/core": "^7.7.1",
+    "sass": "^1.49.11",
+    "sass-loader": "^12.6.0",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
-    "chokidar": "^3.5.2",
-    "esno": "^0.14.0",
+    "chokidar": "^3.5.3",
+    "esno": "^0.14.1",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "typescript": "~4.5.4",
-    "webpack": "^5.67.0"
+    "typescript": "~4.5.5",
+    "webpack": "^5.71.0"
   }
 }
