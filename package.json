@@ -6,10 +6,10 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "dev:dumi":"pnpm dev --filter=vuepress-theme-dumi",
-    "build:dumi":"pnpm build --filter=vuepress-theme-dumi",
-    "dev:block":"pnpm dev --filter=vuepress-plugin-code-block",
-    "build:block":"pnpm build --filter=vuepress-plugin-code-block",
+    "dev:dumi": "pnpm dev --filter=vuepress-theme-dumi",
+    "build:dumi": "pnpm build --filter=vuepress-theme-dumi",
+    "dev:block": "pnpm dev --filter=vuepress-plugin-code-block",
+    "build:block": "pnpm build --filter=vuepress-plugin-code-block",
     "preinstall": "npx only-allow pnpm"
   },
   "keywords": [],
@@ -26,7 +26,7 @@
     "@vuepress/utils": "^2.0.0-beta.38",
     "@yanyu-fe/vuepress-plugin-code-block": "workspace:*",
     "@yanyu-fe/vuepress-theme-dumi": "workspace:*",
-    "eslint": "^8.12.0",
+    "eslint": "^8.13.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^8.6.0",
     "less": "^4.1.2",
@@ -36,7 +36,7 @@
     "typescript": "~4.5.5",
     "vite": "^2.9.1",
     "vue": "^3.2.31",
-    "vuepress": "^2.0.0-beta.38",
-    "webpack": "^5.71.0"
+    "vuepress": "^2.0.0-beta.39",
+    "webpack": "^5.72.0"
   }
 }
