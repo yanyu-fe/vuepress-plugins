@@ -1,12 +1,11 @@
-import { defineUserConfig } from "vuepress";
-import { ViteBundlerOptions } from "vuepress";
+import { defineUserConfig, viteBundler } from "vuepress";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import { DefaultThemeOptions } from "@yanyu-fe/vuepress-theme-dumi";
-export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
+import { codeBlockPlugin } from "@yanyu-fe/vuepress-plugin-code-block";
+import { searchPlugin } from "@vuepress/plugin-search";
+import { defaultTheme } from "@yanyu-fe/vuepress-theme-dumi"
+export default defineUserConfig({
   title: "文档中心",
-  theme: "@yanyu-fe/vuepress-theme-dumi",
-  lang: "zh-CN",
-  themeConfig: {
+  theme: defaultTheme({
     lastUpdatedText: "最后更新时间",
     contributorsText: "贡献者",
     locales: {
@@ -81,14 +80,10 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
         },
       },
     },
-  },
-  bundlerConfig: {
+  }),
+  lang: "zh-CN",
+  bundler: viteBundler({
     viteOptions: {
-      // server: {
-      // fs: {
-      //   strict: false,
-      // },
-      // },
       css: {
         preprocessorOptions: {
           less: {
@@ -98,18 +93,15 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
       },
       plugins: [vueJsx()],
     },
-  },
+  }),
   plugins: [
-    ["@yanyu-fe/vuepress-plugin-code-block", {}],
-    [
-      "@vuepress/plugin-search",
-      {
-        locales: {
-          "/": {
-            placeholder: "搜索",
-          },
+    codeBlockPlugin({}),
+    searchPlugin({
+      locales: {
+        "/": {
+          placeholder: "搜索",
         },
       },
-    ],
+    }),
   ],
 });

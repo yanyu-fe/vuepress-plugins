@@ -3,6 +3,8 @@ import { extname, join } from "path";
 import { resolveFormatVue } from "./resolveFormatVue";
 import { resolveSourceCode } from "./resolveSourceCode";
 import { resolveFormatSource } from "./resolveFormatSource";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import * as MarkDownIt from "markdown-it";
 export const resolveHtmlElementNode = (
   md: MarkDownIt,
