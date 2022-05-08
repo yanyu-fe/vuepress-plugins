@@ -3,7 +3,7 @@ import "./test.less";
 export default defineComponent({
   setup() {
     return () => {
-      return <button class="button">测试jsx</button>;
+      return <button class="button">1111221</button>;
     };
   },
 });

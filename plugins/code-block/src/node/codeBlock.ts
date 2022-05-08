@@ -4,31 +4,27 @@ import { render } from "posthtml-render";
 import { dirname, join, relative, resolve } from "path";
 import { normalizePath } from "vite";
 import { resolveHtmlBlock } from "./resolveHtmlBlock";
-// import codeBlockHMR from "./codeBlockHMR";
+import codeBlockHMR from "./codeBlockHMR";
 export interface UserOptions {
   wrapper?: string;
+  alias?: string;
   [key: string]: any;
 }
 const codeBlockPlugin =
-  (_: UserOptions): Plugin =>
+  (_?: UserOptions): Plugin =>
   (app: App) => {
     const fileData: Record<string, Record<string, string>> = {};
-    const wrapper = _.wrapper || "demo";
+    const wrapper = _?.wrapper || "demo";
+    const alias = _?.alias || "YANYU_FE_CODE_BLOCK";
     return {
       name: "vuepress-plugin-code-block",
       multiple: true,
       alias: {
-        "@codeBlock": app.dir.source(),
+        [`@${alias}`]: app.dir.source(),
       },
       clientAppEnhanceFiles: normalizePath(
         resolve(__dirname, "../client/clientAppEnhance.js")
       ),
-      onInitialized: (app) => {
-        if (app.options.bundler.name === "vite") {
-          // 当前是vite的情况下
-          console.log(app.options.bundler);
-        }
-      },
       extendsMarkdown: (md) => {
         resolveHtmlBlock(md, fileData, wrapper);
       },
@@ -44,7 +40,7 @@ const codeBlockPlugin =
             const demoPath = join(dirName, importsKey);
             const relativePath = relative(app.dir.source(), demoPath);
             importData.push(
-              `import ${demoName} from "@codeBlock/${normalizePath(
+              `import ${demoName} from "@${alias}/${normalizePath(
                 relativePath
               )}";`
             );
@@ -94,6 +90,15 @@ const codeBlockPlugin =
               )}\n</script>`;
               page.hoistedTags.push(myData);
             }
+          }
+        }
+      },
+      extendsBundlerOptions: (options, app) => {
+        if (app.options.bundler.name.endsWith("vite")) {
+          if (options.viteOptions.plugins) {
+            options.viteOptions.plugins.push(codeBlockHMR(app));
+          } else {
+            options.viteOptions.plugins = [codeBlockHMR(app)];
           }
         }
       },
