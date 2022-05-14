@@ -26,6 +26,7 @@ pnpm add -D @yanyu-fe/vuepress-plugin-code-block
 
 ```ts
 import { defineUserConfig } from "vuepress";
+import { codeBlockPlugin } from "@yanyu-fe/vuepress-plugin-code-block";
 export default defineUserConfig({
   title: "文档",
   plugins: [codeBlockPlugin()],
