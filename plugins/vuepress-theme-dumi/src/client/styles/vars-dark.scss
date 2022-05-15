@@ -35,7 +35,16 @@ html.dark {
   --c-details-bg: #323843;
 
   // code blocks vars
-  --code-hl-bg-color: #363b46;
+  --code-bg-color: #262626;
+  --code-hl-bg-color: #141414;
+  --code-pre-color: #ccc;
+  --code-punctuation-color: hsla(0,0%,100%,.85);
+  --code-symbol-color: hsla(0,0%,100%,.85);
+  --code-comment-color:#708090;
+  --code-builtin-color:#66d9ef;
+  --code-string-color:#a6e22e;
+  --code-number-color: #f9fafb;
+  --code-attr-name-color:#6abe39;
 }
 
 // plugin-docsearch
