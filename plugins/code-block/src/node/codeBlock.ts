@@ -22,8 +22,8 @@ const codeBlockPlugin =
       alias: {
         [`@${alias}`]: app.dir.source(),
       },
-      clientAppEnhanceFiles: normalizePath(
-        resolve(__dirname, "../client/clientAppEnhance.js")
+      clientConfigFile: normalizePath(
+        resolve(__dirname, "../client/config.js")
       ),
       extendsMarkdown: (md) => {
         resolveHtmlBlock(md, fileData, wrapper);
