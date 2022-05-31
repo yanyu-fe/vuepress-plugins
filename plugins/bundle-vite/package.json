@@ -1,6 +1,6 @@
 {
   "name": "@yanyu-fe/bundler-vite",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bundler vite package of VuePress",
   "keywords": [
     "vuepress-bundler",
@@ -8,16 +8,20 @@
     "bundler",
     "vite"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://github.com/yanyu-fe",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/yanyu-fe/vuepress-plugins/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/yanyu-fe/vuepress-plugins.git"
   },
   "license": "MIT",
-  "author": "meteorlxy",
+  "author": "aibayanyu",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -41,8 +45,5 @@
     "vite": "~2.9.9",
     "vue": "^3.2.36",
     "vue-router": "^4.0.15"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
