@@ -1,8 +1,9 @@
-import { defineUserConfig, viteBundler } from "vuepress";
+import { defineUserConfig } from "vuepress";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { codeBlockPlugin } from "@yanyu-fe/vuepress-plugin-code-block";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { defaultTheme } from "@yanyu-fe/vuepress-theme-dumi";
+import { viteBundler } from "@yanyu-fe/bundler-vite";
 export default defineUserConfig({
   title: "文档中心",
   theme: defaultTheme({
