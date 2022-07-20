@@ -47,9 +47,9 @@ const codeBlockPlugin =
           }
           let flag = false;
           if (importData.length > 0) {
-            if (page.hoistedTags && page.hoistedTags.length > 0) {
+            if (page.sfcBlocks && page.sfcBlocks.length > 0) {
               let i = 0;
-              for (const hoistedTag of page.hoistedTags) {
+              for (const hoistedTag of page.sfcBlocks) {
                 const html = parser(hoistedTag);
                 for (const htmlElement of html) {
                   if (
@@ -75,20 +75,20 @@ const codeBlockPlugin =
                     }
                   }
                 }
-                page.hoistedTags[i] = render(html);
+                page.sfcBlocks[i] = render(html);
                 i++;
               }
               if (!flag) {
                 const myData = `<script setup lang="ts">\n${importData.join(
                   "\n"
                 )}\n</script>`;
-                page.hoistedTags.push(myData);
+                page.sfcBlocks.push(myData);
               }
             } else {
               const myData = `<script setup lang="ts">\n${importData.join(
                 "\n"
               )}\n</script>`;
-              page.hoistedTags.push(myData);
+              page.sfcBlocks.push(myData);
             }
           }
         }
