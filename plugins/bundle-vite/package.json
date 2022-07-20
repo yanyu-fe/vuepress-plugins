@@ -1,6 +1,6 @@
 {
   "name": "@yanyu-fe/bundler-vite",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bundler vite package of VuePress",
   "keywords": [
     "vuepress-bundler",
