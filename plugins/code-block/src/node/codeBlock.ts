@@ -24,7 +24,7 @@ const codeBlockPlugin =
         [`@${alias}`]: app.dir.source(),
       },
       clientConfigFile: normalizePath(
-        resolve(__dirname, "../client/config.mjs")
+        resolve(__dirname, "../../dist/client/config.mjs")
       ),
       extendsMarkdown: (md) => {
         resolveHtmlBlock(md as any, fileData, wrapper);

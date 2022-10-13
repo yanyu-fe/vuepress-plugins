@@ -81,7 +81,6 @@
     <div class="button-desc">测试11111</div>
 </demo>
 
-<demo src="./example/tsTest.ts"></demo>
 
 
 {{ title }}

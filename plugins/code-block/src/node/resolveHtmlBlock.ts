@@ -27,4 +27,18 @@ export const resolveHtmlBlock = (
     tokens[idx].content = render(html);
     return rawRule(tokens, idx, options, env, self);
   };
+  const rawDataRule = md.renderer.rules.html_inline!;
+  md.renderer.rules.html_inline = function (tokens, idx, options, env, self) {
+    if (oldFile !== env.filePath) {
+      data = {};
+      oldFile = env.filePath;
+    }
+    const dir = dirname(env.filePath);
+    const content = tokens[idx].content;
+    const html: Node[] = parser(content);
+    resolveCodeBlock(html, wrapper, md, dir, data, suffixId, suffixArr);
+    fileData[env.filePath] = Object.assign({}, data);
+    tokens[idx].content = render(html);
+    return rawDataRule(tokens, idx, options, env, self);
+  };
 };
