@@ -10,7 +10,6 @@ export interface UserOptions {
   [key: string]: any;
 }
 const __dirname = dirname(fileURLToPath(new URL(import.meta.url)));
-console.log(__dirname);
 const codeBlockPlugin =
   (_?: UserOptions): Plugin =>
   (app: App) => {
@@ -24,7 +23,7 @@ const codeBlockPlugin =
         [`@${alias}`]: app.dir.source(),
       },
       clientConfigFile: normalizePath(
-        resolve(__dirname, "../../dist/client/config.mjs")
+        resolve(__dirname, "../client/config.mjs")
       ),
       extendsMarkdown: (md) => {
         resolveHtmlBlock(md as any, fileData, wrapper);
