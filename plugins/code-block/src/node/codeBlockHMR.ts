@@ -1,9 +1,8 @@
 import { Plugin, HmrContext, normalizePath } from "vite";
 import { App } from "@vuepress/core";
 import { handlePageChange } from "@vuepress/cli";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { existsSync } from "fs-extra";
+import fsExtra  from "fs-extra";
+const { existsSync } = fsExtra;
 
 const codeBlockHMR = (app: App): Plugin => {
   return {

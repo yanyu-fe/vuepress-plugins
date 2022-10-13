@@ -1,5 +1,8 @@
-@import "@vuepress/theme-default/lib/client/styles/variables";
 
+// responsive breakpoints
+$MQNarrow: 959px !default;
+$MQMobile: 719px !default;
+$MQMobileNarrow: 419px !default;
 :root{
     --demo-bg:#f0f0f0;
     --demo-code-color: #177ddc;

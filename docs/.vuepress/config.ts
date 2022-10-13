@@ -1,9 +1,8 @@
-import { defineUserConfig } from "vuepress";
+import { defineUserConfig, defaultTheme, viteBundler } from "vuepress";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { codeBlockPlugin } from "@yanyu-fe/vuepress-plugin-code-block";
 import { searchPlugin } from "@vuepress/plugin-search";
-import { defaultTheme } from "@yanyu-fe/vuepress-theme-dumi";
-import { viteBundler } from "@yanyu-fe/bundler-vite";
+// import { defaultTheme } from "@yanyu-fe/vuepress-theme-dumi";
 export default defineUserConfig({
   title: "文档中心",
   theme: defaultTheme({
@@ -82,19 +81,12 @@ export default defineUserConfig({
       },
     },
   }),
-  lang: "zh-CN",
   bundler: viteBundler({
     viteOptions: {
-      css: {
-        preprocessorOptions: {
-          less: {
-            javascriptEnabled: true,
-          },
-        },
-      },
       plugins: [vueJsx()],
     },
   }),
+  lang: "zh-CN",
   plugins: [
     codeBlockPlugin({}),
     searchPlugin({

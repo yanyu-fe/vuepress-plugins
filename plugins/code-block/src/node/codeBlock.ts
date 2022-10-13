@@ -1,15 +1,16 @@
 import { App, Plugin } from "@vuepress/core";
-import { parser } from "posthtml-parser";
-import { render } from "posthtml-render";
 import { dirname, join, relative, resolve } from "path";
 import { normalizePath } from "vite";
 import { resolveHtmlBlock } from "./resolveHtmlBlock";
 import codeBlockHMR from "./codeBlockHMR";
+import { fileURLToPath } from "url";
 export interface UserOptions {
   wrapper?: string;
   alias?: string;
   [key: string]: any;
 }
+const __dirname = dirname(fileURLToPath(new URL(import.meta.url)));
+console.log(__dirname);
 const codeBlockPlugin =
   (_?: UserOptions): Plugin =>
   (app: App) => {
@@ -23,10 +24,10 @@ const codeBlockPlugin =
         [`@${alias}`]: app.dir.source(),
       },
       clientConfigFile: normalizePath(
-        resolve(__dirname, "../client/config.js")
+        resolve(__dirname, "../client/config.mjs")
       ),
       extendsMarkdown: (md) => {
-        resolveHtmlBlock(md, fileData, wrapper);
+        resolveHtmlBlock(md as any, fileData, wrapper);
       },
       extendsPage: (page, app) => {
         const filePath = page.filePath;
@@ -45,60 +46,42 @@ const codeBlockPlugin =
               )}";`
             );
           }
-          let flag = false;
+          const myData = `${importData.join("\n")}`;
           if (importData.length > 0) {
-            if (page.sfcBlocks && page.sfcBlocks.length > 0) {
-              let i = 0;
-              for (const hoistedTag of page.sfcBlocks) {
-                const html = parser(hoistedTag);
-                for (const htmlElement of html) {
-                  if (
-                    typeof htmlElement === "object" &&
-                    htmlElement.tag === "script"
-                  ) {
-                    flag = true;
-                    // 定义当前的信息
-                    if (htmlElement.content instanceof Array) {
-                      htmlElement.content = [
-                        ...importData,
-                        ...htmlElement.content,
-                      ];
-                    } else {
-                      if (htmlElement.content) {
-                        htmlElement.content = [
-                          ...importData,
-                          htmlElement.content,
-                        ];
-                      } else {
-                        htmlElement.content = importData;
-                      }
-                    }
-                  }
-                }
-                page.sfcBlocks[i] = render(html);
-                i++;
-              }
-              if (!flag) {
-                const myData = `<script setup lang="ts">\n${importData.join(
-                  "\n"
-                )}\n</script>`;
-                page.sfcBlocks.push(myData);
-              }
+            if (page.sfcBlocks && page.sfcBlocks.scriptSetup) {
+              const content = `${page.sfcBlocks.scriptSetup.tagOpen}
+${myData}
+${page.sfcBlocks.scriptSetup.contentStripped}
+${page.sfcBlocks.scriptSetup.tagClose}`;
+              page.sfcBlocks.scriptSetup = {
+                ...page.sfcBlocks.scriptSetup,
+                content,
+                contentStripped:
+                  myData + page.sfcBlocks.scriptSetup.contentStripped,
+              };
             } else {
-              const myData = `<script setup lang="ts">\n${importData.join(
-                "\n"
-              )}\n</script>`;
-              page.sfcBlocks.push(myData);
+              const content = `<script setup>
+${myData}
+</script>`;
+              page.sfcBlocks.scriptSetup = {
+                type: "script",
+                content,
+                contentStripped: myData,
+                tagOpen: `<script setup>`,
+                tagClose: "</script>",
+              };
             }
           }
         }
       },
       extendsBundlerOptions: (options, app) => {
         if (app.options.bundler.name.endsWith("vite")) {
-          if (options.viteOptions.plugins) {
+          if (options.viteOptions?.plugins) {
             options.viteOptions.plugins.push(codeBlockHMR(app));
           } else {
-            options.viteOptions.plugins = [codeBlockHMR(app)];
+            options.viteOptions = {
+              plugins: [codeBlockHMR(app)],
+            };
           }
         }
       },
