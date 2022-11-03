@@ -1,6 +1,6 @@
 {
   "name": "@yanyu-fe/vuepress-plugin-code-block",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "vuepress@v2代码实现代码块demo展示",
   "main": "dist/node/index.mjs",
   "type": "module",
@@ -27,11 +27,11 @@
     "vite": "^3.1.4"
   },
   "dependencies": {
-    "@vuepress/cli": "^2.0.0-beta.51",
-    "@vuepress/core": "^2.0.0-beta.51",
-    "@vuepress/markdown": "^2.0.0-beta.51",
-    "@vuepress/plugin-prismjs": "^2.0.0-beta.51",
-    "@vuepress/theme-default": "^2.0.0-beta.51",
+    "@vuepress/cli": "^2.0.0-beta.53",
+    "@vuepress/core": "^2.0.0-beta.53",
+    "@vuepress/markdown": "^2.0.0-beta.53",
+    "@vuepress/plugin-prismjs": "^2.0.0-beta.53",
+    "@vuepress/theme-default": "^2.0.0-beta.53",
     "fs-extra": "^10.1.0",
     "lodash-es": "^4.17.21",
     "markdown-it": "^13.0.1",
